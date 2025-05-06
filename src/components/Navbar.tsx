@@ -29,9 +29,11 @@ const Navbar = () => {
           <Link to="/servicios" className="text-white hover:text-eco-cream transition-colors">Servicios</Link>
           <Link to="/galeria" className="text-white hover:text-eco-cream transition-colors">Galería</Link>
           <Link to="/contacto" className="text-white hover:text-eco-cream transition-colors">Contacto</Link>
-          <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green">
-            Reservar Ahora
-          </Button>
+          <Link to="/reserva">
+            <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green">
+              Reservar Ahora
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -44,9 +46,11 @@ const Navbar = () => {
             <Link to="/servicios" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Servicios</Link>
             <Link to="/galeria" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Galería</Link>
             <Link to="/contacto" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Contacto</Link>
-            <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green w-full">
-              Reservar Ahora
-            </Button>
+            <Link to="/reserva" onClick={() => setIsOpen(false)}>
+              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green w-full">
+                Reservar Ahora
+              </Button>
+            </Link>
           </div>
         </div>
       )}
