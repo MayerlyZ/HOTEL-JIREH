@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Leaf, Hotel, Tree, Calendar } from 'lucide-react';
+import { Leaf, Hotel, Trees, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const features = [
@@ -15,7 +15,7 @@ const features = [
     description: "Habitaciones diseñadas para brindar comodidad mientras te conectas con la naturaleza."
   },
   {
-    icon: <Tree className="h-8 w-8 text-eco-dark-green" />,
+    icon: <Trees className="h-8 w-8 text-eco-dark-green" />,
     title: "Entorno Natural",
     description: "Ubicado en medio de un bosque prístino, con senderos para explorar la flora y fauna local."
   },
