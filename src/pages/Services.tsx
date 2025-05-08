@@ -2,7 +2,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check } from 'lucide-react';
 
 const Services = () => {
@@ -76,57 +75,59 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-vh-100">
       <Navbar />
-      <div className="pt-24 pb-8 bg-eco-light-green bg-opacity-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-eco-dark-green text-center mb-4 font-playfair">
+      <div className="pt-5 mt-5 pb-4" style={{ backgroundColor: 'rgba(151, 188, 98, 0.2)' }}>
+        <div className="container px-4">
+          <h1 className="display-4 fw-bold text-center mb-3" style={{ color: 'var(--eco-dark-green)', fontFamily: 'Playfair Display, serif' }}>
             Nuestros Servicios
           </h1>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-center text-secondary mx-auto mb-4" style={{ maxWidth: '700px' }}>
             En Eco Lodge ofrecemos una variedad de servicios pensados para enriquecer tu estancia mientras respetamos y celebramos el entorno natural.
           </p>
         </div>
       </div>
       
-      <div className="py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="py-5 px-4">
+        <div className="container">
+          <div className="row g-4">
             {ecoServices.map((service, index) => (
-              <Card key={index} className="overflow-hidden border-eco-medium-green">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={service.imageUrl} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform hover:scale-105" 
-                  />
+              <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div className="card h-100 border-success">
+                  <div className="overflow-hidden" style={{ height: '200px' }}>
+                    <img 
+                      src={service.imageUrl} 
+                      alt={service.title}
+                      className="card-img-top h-100 w-100 object-fit-cover" 
+                    />
+                  </div>
+                  <div className="card-header bg-white">
+                    <h3 className="card-title h5 text-success">{service.title}</h3>
+                    <p className="card-text small text-secondary">{service.description}</p>
+                  </div>
+                  <div className="card-body">
+                    <ul className="list-unstyled">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="d-flex align-items-center mb-2">
+                          <Check className="text-success me-2" size={18} />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-eco-dark-green">{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <Check className="h-5 w-5 text-eco-dark-green mr-2 shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              </div>
             ))}
           </div>
 
-          <div className="mt-16 bg-eco-cream p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-eco-dark-green mb-4">Información Adicional</h2>
-            <ul className="list-disc ml-6 space-y-2">
-              <li>Todos nuestros servicios están diseñados bajo estrictos principios de sostenibilidad.</li>
-              <li>Ofrecemos paquetes personalizados que combinan diferentes servicios.</li>
-              <li>Las actividades pueden reservarse con anticipación o durante tu estancia, sujetas a disponibilidad.</li>
-              <li>Consulta nuestras tarifas especiales para huéspedes del hotel.</li>
-              <li>Solicita información sobre servicios adicionales en la recepción del hotel.</li>
+          <div className="mt-5 p-4 rounded shadow-sm" style={{ backgroundColor: 'var(--eco-cream)' }}>
+            <h2 className="fs-3 fw-semibold mb-3" style={{ color: 'var(--eco-dark-green)' }}>Información Adicional</h2>
+            <ul className="ps-4">
+              <li className="mb-2">Todos nuestros servicios están diseñados bajo estrictos principios de sostenibilidad.</li>
+              <li className="mb-2">Ofrecemos paquetes personalizados que combinan diferentes servicios.</li>
+              <li className="mb-2">Las actividades pueden reservarse con anticipación o durante tu estancia, sujetas a disponibilidad.</li>
+              <li className="mb-2">Consulta nuestras tarifas especiales para huéspedes del hotel.</li>
+              <li className="mb-2">Solicita información sobre servicios adicionales en la recepción del hotel.</li>
             </ul>
           </div>
         </div>

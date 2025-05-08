@@ -2,15 +2,8 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from "@/hooks/use-toast";
 
 const Reservation = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -22,168 +15,171 @@ const Reservation = () => {
     specialRequests: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // In a real application, this would send the data to the server
-    toast({
-      title: "Reservación enviada",
-      description: "Nos pondremos en contacto contigo pronto para confirmar tu reserva.",
-    });
+    alert("Reservación enviada. Nos pondremos en contacto contigo pronto.");
     console.log("Form submitted:", formData);
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-vh-100">
       <Navbar />
-      <div className="pt-24 pb-8 bg-eco-light-green bg-opacity-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-eco-dark-green text-center mb-4 font-playfair">
+      <div className="pt-5 mt-5 pb-4" style={{ backgroundColor: 'rgba(151, 188, 98, 0.2)' }}>
+        <div className="container px-4">
+          <h1 className="display-4 fw-bold text-center mb-3" style={{ color: 'var(--eco-dark-green)', fontFamily: 'Playfair Display, serif' }}>
             Reserva tu Estadía
           </h1>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-center text-secondary mx-auto mb-4" style={{ maxWidth: '700px' }}>
             Completa el formulario a continuación para reservar tu experiencia en nuestro eco lodge. Te contactaremos para confirmar tu reserva.
           </p>
         </div>
       </div>
       
-      <div className="py-12 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="border-eco-medium-green">
-            <CardHeader>
-              <CardTitle className="text-eco-dark-green">Formulario de Reserva</CardTitle>
-              <CardDescription>Todos los campos marcados con * son obligatorios.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName">Nombre completo *</Label>
-                    <Input 
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input 
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono *</Label>
-                    <Input 
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="roomType">Tipo de habitación *</Label>
-                    <select
-                      id="roomType"
-                      name="roomType"
-                      value={formData.roomType}
-                      onChange={handleChange}
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                      required
-                    >
-                      <option value="standard">Estándar - Vista al Bosque</option>
-                      <option value="superior">Superior - Vista a la Montaña</option>
-                      <option value="deluxe">Deluxe - Cerca del Río</option>
-                    </select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="checkIn">Fecha de llegada *</Label>
-                    <Input 
-                      id="checkIn"
-                      name="checkIn"
-                      type="date"
-                      value={formData.checkIn}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="checkOut">Fecha de salida *</Label>
-                    <Input 
-                      id="checkOut"
-                      name="checkOut"
-                      type="date"
-                      value={formData.checkOut}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="guests">Número de huéspedes *</Label>
-                    <Input 
-                      id="guests"
-                      name="guests"
-                      type="number"
-                      min="1"
-                      max="10"
-                      value={formData.guests}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="specialRequests">Peticiones especiales</Label>
-                  <Textarea 
-                    id="specialRequests"
-                    name="specialRequests"
-                    value={formData.specialRequests}
+      <div className="py-5 px-4">
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <div className="card border-success">
+            <div className="card-header bg-white">
+              <h2 className="card-title h4" style={{ color: 'var(--eco-dark-green)' }}>Formulario de Reserva</h2>
+              <p className="card-text text-secondary small">Todos los campos marcados con * son obligatorios.</p>
+            </div>
+            <div className="card-body">
+              <form onSubmit={handleSubmit} className="row g-3">
+                <div className="col-md-6">
+                  <label htmlFor="fullName" className="form-label">Nombre completo *</label>
+                  <input 
+                    type="text"
+                    className="form-control"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
                     onChange={handleChange}
-                    className="min-h-[120px]"
-                    placeholder="Alergias, preferencias dietéticas, solicitudes específicas..."
+                    required
                   />
                 </div>
                 
-                <div className="pt-4">
-                  <Button type="submit" className="w-full bg-eco-dark-green hover:bg-eco-medium-green text-white">
+                <div className="col-md-6">
+                  <label htmlFor="email" className="form-label">Email *</label>
+                  <input 
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="col-md-6">
+                  <label htmlFor="phone" className="form-label">Teléfono *</label>
+                  <input 
+                    type="tel"
+                    className="form-control"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="col-md-6">
+                  <label htmlFor="roomType" className="form-label">Tipo de habitación *</label>
+                  <select
+                    className="form-select"
+                    id="roomType"
+                    name="roomType"
+                    value={formData.roomType}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="standard">Estándar - Vista al Bosque</option>
+                    <option value="superior">Superior - Vista a la Montaña</option>
+                    <option value="deluxe">Deluxe - Cerca del Río</option>
+                  </select>
+                </div>
+                
+                <div className="col-md-6">
+                  <label htmlFor="checkIn" className="form-label">Fecha de llegada *</label>
+                  <input 
+                    type="date"
+                    className="form-control"
+                    id="checkIn"
+                    name="checkIn"
+                    value={formData.checkIn}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="col-md-6">
+                  <label htmlFor="checkOut" className="form-label">Fecha de salida *</label>
+                  <input 
+                    type="date"
+                    className="form-control"
+                    id="checkOut"
+                    name="checkOut"
+                    value={formData.checkOut}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="col-md-12">
+                  <label htmlFor="guests" className="form-label">Número de huéspedes *</label>
+                  <input 
+                    type="number"
+                    className="form-control"
+                    id="guests"
+                    name="guests"
+                    min="1"
+                    max="10"
+                    value={formData.guests}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                
+                <div className="col-12">
+                  <label htmlFor="specialRequests" className="form-label">Peticiones especiales</label>
+                  <textarea 
+                    className="form-control"
+                    id="specialRequests"
+                    name="specialRequests"
+                    rows={4}
+                    value={formData.specialRequests}
+                    onChange={handleChange}
+                    placeholder="Alergias, preferencias dietéticas, solicitudes específicas..."
+                  ></textarea>
+                </div>
+                
+                <div className="col-12 mt-4">
+                  <button type="submit" className="btn btn-success w-100">
                     Enviar Solicitud de Reserva
-                  </Button>
+                  </button>
                   
-                  <p className="text-sm text-gray-500 mt-4">
+                  <p className="text-secondary small mt-3">
                     Al enviar este formulario, aceptas nuestra política de privacidad y términos de servicio. Te enviaremos un correo electrónico de confirmación una vez procesada tu solicitud.
                   </p>
                 </div>
               </form>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
           
-          <div className="mt-12 bg-eco-cream p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-eco-dark-green mb-4">Información sobre Reservas</h2>
-            <ul className="list-disc ml-6 space-y-2">
-              <li>Horario de check-in: 15:00 hrs / Check-out: 12:00 hrs.</li>
-              <li>Se requiere un depósito del 30% para confirmar la reserva.</li>
-              <li>Cancelación gratuita hasta 48 horas antes de la fecha de llegada.</li>
-              <li>Para grupos de más de 8 personas, contactar directamente por email.</li>
-              <li>Si necesitas asistencia con tu reserva, llámanos al +123 456 7890.</li>
+          <div className="mt-5 p-4 rounded shadow-sm" style={{ backgroundColor: 'var(--eco-cream)' }}>
+            <h2 className="fs-3 fw-semibold mb-3" style={{ color: 'var(--eco-dark-green)' }}>Información sobre Reservas</h2>
+            <ul className="ps-4">
+              <li className="mb-2">Horario de check-in: 15:00 hrs / Check-out: 12:00 hrs.</li>
+              <li className="mb-2">Se requiere un depósito del 30% para confirmar la reserva.</li>
+              <li className="mb-2">Cancelación gratuita hasta 48 horas antes de la fecha de llegada.</li>
+              <li className="mb-2">Para grupos de más de 8 personas, contactar directamente por email.</li>
+              <li className="mb-2">Si necesitas asistencia con tu reserva, llámanos al +123 456 7890.</li>
             </ul>
           </div>
         </div>
