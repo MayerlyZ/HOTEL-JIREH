@@ -4,12 +4,12 @@ import { Button } from '@/components/ui/button';
 
 const sliderImages = [
   {
-    url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
-    alt: "Vista montañosa del lodge ecológico"
+    url: "./src/image/san-carlos_0.jpg",
+    alt: "San carlos"
   },
   {
-    url: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb",
-    alt: "Río y montañas cercanas al lodge"
+    url: "./src/image/images.jpeg",
+    alt: "Iglesia de San Carlos"
   },
   {
     url: "https://images.unsplash.com/photo-1515729947596-a598e5de0ab3",
@@ -54,7 +54,7 @@ const HeroSlider = () => {
       {/* Overlay Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-8">
         <h1 className="text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-4 md:mb-6 font-playfair max-w-4xl">
-          Descubre la Armonía con la Naturaleza
+          Donde la naturaleza y la diversión se encuentran
         </h1>
         <p className="text-lg md:text-xl text-white mb-8 max-w-2xl">
           Disfruta de una experiencia única en nuestro lodge ecológico, donde el lujo se encuentra con la sostenibilidad.
