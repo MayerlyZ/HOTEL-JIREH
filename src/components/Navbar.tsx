@@ -1,59 +1,53 @@
 
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 px-4 py-2 md:py-4 md:px-8">
-      <div className="flex justify-between items-center">
-        <Link to="/" className="text-white flex items-center">
-          <span className="text-xl md:text-2xl font-bold font-playfair tracking-wider">Eco Lodge</span>
+    <nav className="navbar navbar-expand-lg navbar-dark position-absolute w-100" style={{ zIndex: 50 }}>
+      <div className="container">
+        <Link className="navbar-brand fs-4 fw-bold" to="/" style={{ fontFamily: 'Playfair Display, serif' }}>
+          Eco Lodge
         </Link>
-
-        {/* Mobile menu button */}
+        
         <button 
-          className="md:hidden text-white"
+          className="navbar-toggler" 
+          type="button" 
           onClick={() => setIsOpen(!isOpen)}
+          aria-controls="navbarNav" 
+          aria-expanded={isOpen ? "true" : "false"} 
+          aria-label="Toggle navigation"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link to="/" className="text-white hover:text-eco-cream transition-colors">Inicio</Link>
-          <Link to="/habitaciones" className="text-white hover:text-eco-cream transition-colors">Habitaciones</Link>
-          <Link to="/servicios" className="text-white hover:text-eco-cream transition-colors">Servicios</Link>
-          <Link to="/galeria" className="text-white hover:text-eco-cream transition-colors">Galería</Link>
-          <Link to="/contacto" className="text-white hover:text-eco-cream transition-colors">Contacto</Link>
-          <Link to="/reserva">
-            <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green">
-              Reservar Ahora
-            </Button>
-          </Link>
+        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={() => setIsOpen(false)}>Inicio</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/habitaciones" onClick={() => setIsOpen(false)}>Habitaciones</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/servicios" onClick={() => setIsOpen(false)}>Servicios</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/galeria" onClick={() => setIsOpen(false)}>Galería</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contacto" onClick={() => setIsOpen(false)}>Contacto</Link>
+            </li>
+            <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
+              <Link className="btn btn-outline-light" to="/reserva" onClick={() => setIsOpen(false)}>
+                Reservar Ahora
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-eco-dark-green bg-opacity-95 absolute top-full left-0 w-full py-4 px-6 animate-fade-in">
-          <div className="flex flex-col space-y-4">
-            <Link to="/" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Inicio</Link>
-            <Link to="/habitaciones" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Habitaciones</Link>
-            <Link to="/servicios" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Servicios</Link>
-            <Link to="/galeria" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Galería</Link>
-            <Link to="/contacto" className="text-white hover:text-eco-cream transition-colors" onClick={() => setIsOpen(false)}>Contacto</Link>
-            <Link to="/reserva" onClick={() => setIsOpen(false)}>
-              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-eco-dark-green w-full">
-                Reservar Ahora
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
